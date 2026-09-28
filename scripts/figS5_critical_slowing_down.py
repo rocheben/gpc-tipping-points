@@ -176,11 +176,11 @@ ax.set_title(f'Lead time at AC1 = 0.9 (mean C = {cross_C.mean():.1f}, D = {cross
 ax.grid(alpha=0.3, axis='y')
 
 plt.tight_layout()
-plt.savefig(FIGDIR / 'FigS4.png', dpi=150, bbox_inches='tight')
+plt.savefig(FIGDIR / 'FigS5.png', dpi=150, bbox_inches='tight')
 print(f"Lead time (mean) — C: {cross_C.mean():.2f}, D: {cross_D.mean():.2f}")
 print(f"Difference C-D: {(cross_C - cross_D).mean():.2f} (paired)")
 from scipy.stats import wilcoxon
 if len(cross_C) > 5:
     stat, pval = wilcoxon(cross_C, cross_D)
     print(f"Wilcoxon paired test: stat={stat:.2f}, p={pval:.4f}")
-print("Saved FigS4.png")
+print("Saved FigS5.png")

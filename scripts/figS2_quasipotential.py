@@ -1,5 +1,5 @@
 """
-Quasi-potential V(C, S), diversity marginalised (Supplementary Figure S1).
+Quasi-potential V(C, S), diversity marginalised (Supplementary Figure S2).
 This is the operational quantification of 'irreversible' destabilization.
 """
 from pathlib import Path
@@ -52,8 +52,8 @@ def sample_stationary(T_val, n_traj=1500, t_end=100, dt=0.1, sigma=0.05, seed=0)
 # Estimate V(C, S) at three therapy levels
 fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
 
-# therapy levels chosen on either side of the bifurcation of Figure 1 (functional branch lost
-# between T = 0.13 and T = 0.15 in script fig1), matching the two levels used in Figure 1B
+# therapy levels chosen on either side of the bifurcation of Figure 2 (functional branch lost
+# between T = 0.13 and T = 0.15 in script fig2_bistability), matching the two levels used in Figure 2B
 for idx, (T_val, title) in enumerate([(0.0, 'Pre-therapy (T=0)'),
                                        (0.10, 'Subcritical (T=0.10)'),
                                        (0.30, 'Supracritical (T=0.30)')]):
@@ -80,7 +80,7 @@ for idx, (T_val, title) in enumerate([(0.0, 'Pre-therapy (T=0)'),
     plt.colorbar(im, ax=ax, label='Quasi-potential V')
 
 plt.tight_layout()
-plt.savefig(FIGDIR / 'FigS1.png', dpi=150, bbox_inches='tight')
+plt.savefig(FIGDIR / 'FigS2.png', dpi=150, bbox_inches='tight')
 plt.close()
-print("Saved FigS1.png")
+print("Saved FigS2.png")
 

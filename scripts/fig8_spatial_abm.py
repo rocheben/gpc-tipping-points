@@ -9,7 +9,7 @@ Local collective function F_i = C_loc S_loc g(D_loc), computed on the (2r+1)^2 M
 neighbourhood of cell i (self included). r is the interaction radius; r = None means
 every cell sees the whole lattice (well-mixed limit).
 
-Per-capita transition rates are the ODE fluxes of fig1 and fig3 evaluated on the cell's own
+Per-capita transition rates are the ODE fluxes of fig2 and fig3 evaluated on the cell's own
 neighbourhood, converted to per-capita rates:
   A -> B : (mu0 F_i + mu1) / (1 - D_loc)        B -> A : delta_D
   0 -> 1 (cooperation) : alpha F_i              1 -> 0 : delta_C + beta T_C(x) / C_glob
@@ -17,7 +17,7 @@ neighbourhood, converted to per-capita rates:
 Therapy acts on the whole lattice with a per-capita hazard such that the total flux equals the
 ODE term (beta T, kappa T), i.e. the drug is spatially uniform unless a mask T(x) is given.
 In the well-mixed limit the expected dynamics are exactly those of the ODE, which is checked
-below (panel A). All parameters are those of fig1 and fig3; nothing is re-tuned.
+below (panel A). All parameters are those of fig2 and fig3; nothing is re-tuned.
 
 Outcome: collapse = no cooperative cell left at t_end (C = 0 is absorbing).
 Threshold a50 = amplitude giving 50 % collapse, from a coarse scan then a refined scan.
@@ -33,7 +33,7 @@ from multiprocessing import Pool
 from scipy.ndimage import uniform_filter
 
 P = dict(mu0=0.8, mu1=0.05, delta_D=0.6, alpha=1.2, beta=0.8, delta_C=0.15, gamma=1.0, kappa=0.6, delta_S=0.15)
-IC = (0.753, 0.801, 0.842)          # functional attractor of the ODE (fig1_bistability.py)
+IC = (0.753, 0.801, 0.842)          # functional attractor of the ODE (fig2_bistability.py)
 L, DT, T0, T_END = 48, 0.05, 10.0, 300.0
 
 # ------------------------------------------------------------------ ABM core

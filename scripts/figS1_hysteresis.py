@@ -1,5 +1,5 @@
 """
-Hysteresis loop under a slow up-and-down therapy ramp (manuscript Figure 2).
+Hysteresis loop under a slow up-and-down therapy ramp (Supplementary Figure S1).
 This is the operational quantification of 'irreversible' destabilization.
 """
 from pathlib import Path
@@ -66,6 +66,6 @@ ax.set_title('Hysteresis: the collapsed state persists after therapy returns to 
 ax.legend()
 ax.grid(alpha=0.3)
 plt.tight_layout()
-plt.savefig(FIGDIR / 'Fig2.png', dpi=150, bbox_inches='tight')
+plt.savefig(FIGDIR / 'FigS1.png', dpi=150, bbox_inches='tight')
 plt.close()
-print("Saved Fig2.png")
+print("Saved FigS1.png")

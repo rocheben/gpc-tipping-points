@@ -40,5 +40,5 @@ if __name__ == '__main__':
     ax.set_ylabel('Fraction of runs still collapsed')
     ax.set_title('Collapse is metastable: noise-driven return to the functional GPC')
     ax.set_ylim(-0.02, 1.02); ax.legend(); ax.grid(alpha=0.3)
-    plt.tight_layout(); plt.savefig(FIGDIR / 'FigS2.png', dpi=150, bbox_inches='tight')
-    print('Saved FigS2.png')
+    plt.tight_layout(); plt.savefig(FIGDIR / 'FigS3.png', dpi=150, bbox_inches='tight')
+    print('Saved FigS3.png')

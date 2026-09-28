@@ -39,4 +39,4 @@ Sensitivity (phi* at omega = 6; omega* at phi = 0.5 and 0.9; ratio at phi = 0.9,
   burden at diagnosis 0.5    R(no coupling) 1.37  phi* 0.10  omega*(0.5) 1.22  omega*(0.9) 1.33  R(0.9,2) 0.90  jump at phi* 0.55  max|dR/domega| 0.39
   adaptive pause at 50%      R(no coupling) 1.91  phi* 0.10  omega*(0.5) 2.77  omega*(0.9) 3.47  R(0.9,2) 1.21  jump at phi* 0.76  max|dR/domega| 0.58
 
-Saved Fig7.png   (68 s)
+Saved Fig7.png   (67 s)

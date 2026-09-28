@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 
 P = dict(mu0=0.8, mu1=0.05, delta_D=0.6, alpha=1.2, beta=0.8,
          delta_C=0.15, gamma=1.0, kappa=0.6, delta_S=0.15)
-IC = np.array([0.753, 0.801, 0.842])   # functional attractor (from fig1_bistability.py)
+IC = np.array([0.753, 0.801, 0.842])   # functional attractor (from fig2_bistability.py)
 DT, T0, T_END = 0.05, 10.0, 250.0
 
 def schedule(kind, a, w, d=0.0):

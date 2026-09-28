@@ -2,12 +2,12 @@
 Metastatic meta-community: n sites, each carrying its own GPC (D_k, C_k, S_k) and a
 tumour burden N_k, coupled by cell migration.
 
-Within a site, the GPC equations are those of fig1 and fig3 (same parameters), with
+Within a site, the GPC equations are those of fig2 and fig3 (same parameters), with
 the coherence channel T_C applied at a site-specific exposure a_k (heterogeneous drug
 penetration, a_k = abar * LogNormal(0, sd)).
 
 Burden: dN_k = N_k [ r0 (1 + omega F_k)(1 - N_k/K) - d ] - m N_k + m/(n-1) sum_{j!=k} N_j
-  ASSUMPTION (not in fig1 to fig6): d is chosen between r0 and r0(1 + omega F_func), so a
+  ASSUMPTION (not in the other scripts): d is chosen between r0 and r0(1 + omega F_func), so a
   site whose GPC has collapsed (F = 0) declines and a functional site persists. Without this
   assumption GPC collapse slows growth but never eliminates a site, and "persistence" is
   undefined. d is a free parameter.
@@ -20,7 +20,7 @@ transported. Variant 'burden only' switches composition transport off.
 A site whose burden falls below 1e-4 is extinct (set to 0; it can be recolonised by immigrants).
 Persistence = at least one site not extinct at t_end = 600. A collapsed site with no inflow
 reaches the floor well before t_end; in the meantime GPC noise (sigma = 0.01, as in scripts
-figS2/fig3) can return it to the functional state, which is part of the model, not an artefact.
+figS3/fig3) can return it to the functional state, which is part of the model, not an artefact.
 Runtime: about 20 min on one core.
 """
 from pathlib import Path
@@ -247,5 +247,5 @@ if __name__ == '__main__':
     a5.plot(NS, cap(np.array(row_nonoise)), 's--', color='C2', label='no GPC noise')
     a5.set_xscale('log', base=2); a5.set_xlabel('n'); a5.set_ylabel('Exposure for 50% eradication (x a*)')
     a5.set_title('F. m = 0.01, sd = 0.3: with and without GPC noise', fontsize=10); a5.legend(fontsize=8); a5.grid(alpha=0.3)
-    plt.tight_layout(); plt.savefig(FIGDIR / 'FigS5.png', dpi=150, bbox_inches='tight')
-    print(f'\nSaved FigS5.png   ({(time.time() - t_start)/60:.1f} min)')
+    plt.tight_layout(); plt.savefig(FIGDIR / 'FigS6.png', dpi=150, bbox_inches='tight')
+    print(f'\nSaved FigS6.png   ({(time.time() - t_start)/60:.1f} min)')

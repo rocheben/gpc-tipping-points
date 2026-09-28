@@ -45,4 +45,4 @@ Identical exposure 3 a* at every site. Isolated site: P(persist) = 0.042 (noise-
   m = 0.01  P(persist) vs n: 1: 0.03  2: 0.01  4: 0.07  8: 0.15  16: 0.23  32: 0.48
   independent-sites prediction 1-(1-p1)^n: 1: 0.04  2: 0.08  4: 0.16  8: 0.29  16: 0.50  32: 0.75
 
-Saved FigS5.png   (16.0 min)
+Saved FigS6.png   (15.7 min)

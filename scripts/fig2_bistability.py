@@ -135,6 +135,6 @@ ax.legend()
 ax.grid(alpha=0.3)
 
 plt.tight_layout()
-plt.savefig(FIGDIR / 'Fig1.png', dpi=150, bbox_inches='tight')
-print("\nSaved Fig1.png")
+plt.savefig(FIGDIR / 'Fig2.png', dpi=150, bbox_inches='tight')
+print("\nSaved Fig2.png")
 plt.close()
