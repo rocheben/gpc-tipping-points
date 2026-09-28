@@ -1,0 +1,11 @@
+Critical maximal coherence Cmax* = 0.518
+ER targeted  critical fraction removed: median 0.158 (IQR 0.150-0.175)
+ER random    critical fraction removed: median 0.250 (IQR 0.237-0.275)
+BA targeted  critical fraction removed: median 0.100 (IQR 0.075-0.100)
+BA random    critical fraction removed: median 0.250 (IQR 0.225-0.275)
+ER fragility index Phi: median 1.22
+BA fragility index Phi: median 1.48
+Spearman(Phi, critical targeted fraction) = -0.89, p = 3.8e-69
+  within ER: rho = -0.49, p = 2.7e-07
+  within BA: rho = -0.63, p = 2.5e-12
+Saved Fig5.png

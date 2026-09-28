@@ -1,0 +1,15 @@
+Total drug exposure:
+  Continuous: 210.0
+  Adaptive:   40.5  (19% of continuous)
+
+Mean F (after transient):
+  Continuous: F_mean = 0.000
+  Adaptive:   F_mean = 0.373
+
+Reported for the abiraterone adaptive trial (Zhang et al. 2017, Nat Commun; 2022, eLife):
+  >2x increase in TTP, ~50% cumulative dose vs continuous
+
+GPC model qualitative match: both suppress tumor function, adaptive
+with substantially less cumulative drug. Quantitative TTP ratio
+requires clone-level resistance not captured by the bare GPC model.
+Saved FigS3.png

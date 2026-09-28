@@ -1,0 +1,27 @@
+Stationary state without therapy (global D, C, S, mean local F):
+  well-mixed  0.759 0.802 0.842 0.494
+  r = 4       0.750 0.800 0.841 0.497
+  r = 2       0.739 0.789 0.840 0.484
+  r = 1       0.682 0.763 0.833 0.470
+
+Critical amplitude a50 (regime 1: amplitude per drug, w = 5; regime 2: peak burden, tau = 16)
+  schedule     ODE  well-mixed       r = 4       r = 2       r = 1   max ambiguous share
+  C          0.333       0.340       0.333       0.318       0.281   0.00
+  sim        0.274       0.277       0.278       0.263       0.247   0.12
+  CS         0.322       0.325       0.332       0.313       0.270   0.12
+  SC         0.323       0.323       0.320       0.303       0.257   0.00
+  sim2       0.333       0.334       0.320       0.288       0.220   0.00
+  CS2        0.260       0.260       0.258       0.243       0.196   0.00
+  SC2        0.263       0.264       0.258       0.240       0.188   0.00
+  Cfull2     0.217       0.217       0.208       0.188       0.135   0.00
+
+Delay between strikes (C then S, regime 1), a50:
+  r = 2: d=0: 0.313  d=5: 0.320  d=10: 0.318  d=20: 0.320   (simultaneous 0.263)
+  r = 1: d=0: 0.270  d=5: 0.278  d=10: 0.276  d=20: 0.282   (simultaneous 0.247)
+
+Sanctuary (C only, a = 0.6, w = 5; unexposed square of given side, lattice 48 x 48): P(collapse)
+  r = 4  side 0: 1.00  side 2: 1.00  side 3: 1.00  side 4: 1.00  side 5: 0.83  side 6: 0.25  side 8: 0.00  side 12: 0.00
+  r = 2  side 0: 1.00  side 2: 1.00  side 3: 0.83  side 4: 0.33  side 5: 0.00  side 6: 0.00  side 8: 0.00  side 12: 0.00
+  r = 1  side 0: 1.00  side 2: 1.00  side 3: 0.58  side 4: 0.33  side 5: 0.00  side 6: 0.00  side 8: 0.00  side 12: 0.00
+
+Saved Fig8.png   (23.6 min)

@@ -1,0 +1,19 @@
+Regime 1 (equal dose per drug, w=5), critical amplitude per drug:
+  C only                 0.333
+  S only                 nan
+  Simultaneous           0.274
+  Sequential C then S    0.322
+  Sequential S then C    0.323
+
+Regime 2 (equal peak burden), critical burden B* vs tau [np.int64(4), np.int64(6), np.int64(10), np.int64(16), np.int64(24), np.int64(40)]
+  Simultaneous           0.634 0.491 0.385 0.333 0.311 0.298
+  Sequential C then S    0.587 0.438 0.322 0.260 0.229 0.208
+  Sequential S then C    0.571 0.433 0.323 0.263 0.230 0.209
+  C only (control)       0.379 0.302 0.244 0.217 0.204 0.197
+
+Delay (C then S), standard D: 0.322 0.327 0.329 0.330 0.332 0.332
+Delay (C then S), slow D     : 0.297 0.299 0.300 0.301 0.301 0.301 (sim 0.260)
+  P(collapse)>=0.5 from B = 0.34 (Simultaneous)
+  P(collapse)>=0.5 from B = 0.26 (Sequential C then S)
+  P(collapse)>=0.5 from B = 0.28 (Sequential S then C)
+Saved Fig3.png

@@ -1,0 +1,11 @@
+w=  5  C-only a*=0.333  S-only a*=nan
+w=  8  C-only a*=0.265  S-only a*=nan
+w= 10  C-only a*=0.245  S-only a*=nan
+w= 12  C-only a*=0.231  S-only a*=1.550
+w= 15  C-only a*=0.220  S-only a*=0.903
+w= 20  C-only a*=0.209  S-only a*=0.738
+w= 25  C-only a*=0.204  S-only a*=0.678
+w= 30  C-only a*=0.201  S-only a*=0.648
+w= 40  C-only a*=0.198  S-only a*=0.620
+w= 60  C-only a*=0.196  S-only a*=0.601
+Saved Fig4.png

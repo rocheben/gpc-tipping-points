@@ -1,0 +1,11 @@
+sigma=0.01: fraction still collapsed at t=100: 1.00, t=300: 0.96
+   time at which half of the runs have relapsed: nan
+sigma=0.015: fraction still collapsed at t=100: 0.88, t=300: 0.50
+   time at which half of the runs have relapsed: 296.4
+sigma=0.02: fraction still collapsed at t=100: 0.65, t=300: 0.19
+   time at which half of the runs have relapsed: 139.8
+sigma=0.025: fraction still collapsed at t=100: 0.40, t=300: 0.04
+   time at which half of the runs have relapsed: 82.0
+sigma=0.03: fraction still collapsed at t=100: 0.21, t=300: 0.01
+   time at which half of the runs have relapsed: 58.3
+Saved FigS2.png

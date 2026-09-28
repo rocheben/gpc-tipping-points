@@ -1,0 +1,13 @@
+fig1_bistability.py                      exit 0       46 s
+fig2_hysteresis.py                       exit 0        1 s
+fig3_sequential_vs_simultaneous.py       exit 0       64 s
+fig4_microenvironment_duration.py        exit 0       30 s
+fig5_network_keystones.py                exit 0        5 s
+fig6_clonal_coupling.py                  exit 0       10 s
+fig7_omega_phi_map.py                    exit 0       69 s
+fig8_spatial_abm.py                      exit 0     1416 s
+figS1_quasipotential.py                  exit 0        2 s
+figS2_stochastic_relapse.py              exit 0        2 s
+figS3_adaptive_collective.py             exit 0        1 s
+figS4_critical_slowing_down.py           exit 0       14 s
+figS5_metastatic_metacommunity.py        exit 0      962 s

@@ -1,0 +1,19 @@
+burden at diagnosis 0.766
+TTP continuous 160   adaptive 330   ratio 2.06
+cumulative dose: continuous 1200, adaptive 889 (74%)
+continuous: resistant fraction >50% at t = 4
+adaptive: resistant fraction >50% at t = 275
+
+TTP ratio (adaptive/continuous) across coupling strengths:
+  phi\omega    0.0    0.5    1.0    2.0
+  0.00       2.72   2.72   2.72   2.74
+  0.45       2.72   2.29   1.99   1.60
+  0.90       2.72   2.33   2.06   1.70
+
+TTP ratio vs initial sensitive burden (phi = 0.90, omega = 1.0):
+  N_s(0) = 0.70: TTP continuous 160, adaptive 225, ratio 1.40
+  N_s(0) = 0.75: TTP continuous 160, adaptive 250, ratio 1.56
+  N_s(0) = 0.80: TTP continuous 160, adaptive 283, ratio 1.77
+  N_s(0) = 0.85: TTP continuous 160, adaptive 330, ratio 2.06
+
+Saved Fig6.png
