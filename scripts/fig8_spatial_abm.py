@@ -31,6 +31,7 @@ FIGDIR.mkdir(exist_ok=True)
 import numpy as np, matplotlib.pyplot as plt, os, sys, time, importlib.util
 from multiprocessing import Pool
 from scipy.ndimage import uniform_filter
+plt.rcParams.update({'font.size': 13, 'axes.titlesize': 13, 'axes.labelsize': 13, 'legend.fontsize': 11, 'xtick.labelsize': 12, 'ytick.labelsize': 12})
 
 P = dict(mu0=0.8, mu1=0.05, delta_D=0.6, alpha=1.2, beta=0.8, delta_C=0.15, gamma=1.0, kappa=0.6, delta_S=0.15)
 IC = (0.753, 0.801, 0.842)          # functional attractor of the ODE (fig2_bistability.py)
@@ -153,7 +154,7 @@ if __name__ == '__main__':
     print('Stationary state without therapy (global D, C, S, mean local F):')
     for r, v in att: print(f'  {rname(r):<11}', ' '.join(f'{x:.3f}' for x in v))
     T = {(k, r, d): (a, amb) for k, r, d, a, amb in thr}
-    print('\nCritical amplitude a50 (regime 1: amplitude per drug, w = 5; regime 2: peak burden, tau = 16)')
+    print('\nCritical amplitude a50 (regime 1: amplitude per agent, w = 5; regime 2: peak total amplitude, tau = 16)')
     print(f'  {"schedule":<8}{"ODE":>8}' + ''.join(f'{rname(r):>12}' for r in RADII) + '   max ambiguous share')
     for k in KINDS:
         row = [T[(k, r, 0.0)] for r in RADII]
@@ -166,41 +167,41 @@ if __name__ == '__main__':
     for r, v in sanc: print(f'  {rname(r):<6}', '  '.join(f'side {s}: {p:.2f}' for s, p in zip(SIDES, v)))
 
     # ---- figure
-    fig = plt.figure(figsize=(16, 10))
+    fig = plt.figure(figsize=(18, 11))
     xs = {None: 8, 4: 4, 2: 2, 1: 1}
     a0 = fig.add_subplot(2, 3, 1)
     for k in KINDS:
         a0.plot(ode[k], T[(k, None, 0.0)][0], 'o', ms=7, label=k)
     lim = [0.18, 0.36]; a0.plot(lim, lim, 'k:', lw=1)
     a0.set_xlabel('critical amplitude, equations (script fig3)'); a0.set_ylabel('ABM, well-mixed, a50')
-    a0.set_title('A. Well-mixed ABM recovers the mean-field thresholds'); a0.legend(fontsize=7, ncol=2); a0.grid(alpha=0.3)
-    lab = {'C': 'C only', 'sim': 'Simultaneous', 'CS': 'Sequential C->S', 'SC': 'Sequential S->C',
-           'sim2': 'Simultaneous', 'CS2': 'Sequential C->S', 'SC2': 'Sequential S->C', 'Cfull2': 'C only (control)'}
+    a0.set_title('A. Well-mixed ABM recovers the mean-field thresholds'); a0.legend(fontsize=10, ncol=2); a0.grid(alpha=0.3)
+    lab = {'C': '$T_C$ only', 'sim': 'Simultaneous', 'CS': '$T_C$ then $T_S$', 'SC': '$T_S$ then $T_C$',
+           'sim2': 'Simultaneous', 'CS2': '$T_C$ then $T_S$', 'SC2': '$T_S$ then $T_C$', 'Cfull2': '$T_C$ only (control)'}
     col = {'C': 'C7', 'sim': 'C3', 'CS': 'C0', 'SC': 'C2', 'sim2': 'C3', 'CS2': 'C0', 'SC2': 'C2', 'Cfull2': 'C7'}
-    for pos, ks, ttl in [(2, ['C', 'sim', 'CS', 'SC'], 'B. Equal dose per drug (w = 5)'),
-                         (3, ['sim2', 'CS2', 'SC2', 'Cfull2'], 'C. Equal peak total burden (tau = 16)')]:
+    for pos, ks, ttl in [(2, ['C', 'sim', 'CS', 'SC'], 'B. Equal amplitude per agent (w = 5)'),
+                         (3, ['sim2', 'CS2', 'SC2', 'Cfull2'], 'C. Equal peak total amplitude (tau = 16)')]:
         ax = fig.add_subplot(2, 3, pos)
         for k in ks:
             ax.plot([xs[r] for r in RADII], [T[(k, r, 0.0)][0] for r in RADII], 'o-', color=col[k], label=lab[k])
             ax.plot(13, ode[k], '_', color=col[k], ms=14, mew=2)
         ax.set_xscale('log', base=2); ax.set_xticks([1, 2, 4, 8, 13]); ax.set_xticklabels(['1', '2', '4', 'well-\nmixed', 'ODE'])
         ax.set_xlabel('Interaction radius r (cells)'); ax.set_ylabel('Critical intensity a50')
-        ax.set_title(ttl); ax.legend(fontsize=8); ax.grid(alpha=0.3)
+        ax.set_title(ttl); ax.legend(fontsize=10); ax.grid(alpha=0.3)
     a3 = fig.add_subplot(2, 3, 4)
     for r, c_ in [(2, 'C0'), (1, 'C9')]:
-        a3.plot(DELAYS, [T[('CS', r, d)][0] for d in DELAYS], 'o-', color=c_, label=f'C then S, {rname(r)}')
+        a3.plot(DELAYS, [T[('CS', r, d)][0] for d in DELAYS], 'o-', color=c_, label=f'$T_C$ then $T_S$, {rname(r)}')
         a3.axhline(T[('sim', r, 0.0)][0], color=c_, ls='--', lw=1, label=f'simultaneous, {rname(r)}')
     a3.set_xlabel('Delay between strikes d'); a3.set_ylabel('a50')
-    a3.set_title('D. Delay does not open a vulnerability window'); a3.legend(fontsize=8); a3.grid(alpha=0.3)
+    a3.set_title('D. Delay does not open a vulnerability window'); a3.legend(fontsize=10); a3.grid(alpha=0.3)
     a4 = fig.add_subplot(2, 3, 5)
     for (r, v), c_ in zip(sanc, ['C1', 'C0', 'C9']):
         a4.plot(SIDES, v, 'o-', color=c_, label=rname(r))
-    a4.set_xlabel('Side of the unexposed square (cells; lattice 48 x 48)'); a4.set_ylabel('P(collapse)')
-    a4.set_title('E. Dose 0.6 (about 2x threshold): a small sanctuary prevents collapse'); a4.legend(fontsize=8); a4.grid(alpha=0.3)
+    a4.set_xlabel('Side of the untreated square (cells; lattice 48 x 48)'); a4.set_ylabel('P(collapse)')
+    a4.set_title('E. Amplitude 0.6 (about 2x threshold):\na small sanctuary prevents collapse'); a4.legend(fontsize=10); a4.grid(alpha=0.3)
     a5 = fig.add_subplot(2, 3, 6)
     ts = sorted(snaps); strip = np.concatenate([np.pad(snaps[t], ((0, 0), (0, 3)), constant_values=0.5) for t in ts], axis=1)
     a5.imshow(strip, cmap='Greys', vmin=0, vmax=1, interpolation='nearest')
-    a5.set_xticks([L/2 + i*(L + 3) for i in range(len(ts))]); a5.set_xticklabels([f't = {t:g}' for t in ts], fontsize=8)
-    a5.set_yticks([]); a5.set_title('F. Re-invasion from a 6 x 6 sanctuary (r = 2, a = 0.6)\nblack = cooperative cell', fontsize=10)
+    a5.set_xticks([L/2 + i*(L + 3) for i in range(len(ts))]); a5.set_xticklabels([f't = {t:g}' for t in ts], fontsize=11)
+    a5.set_yticks([]); a5.set_title('F. Re-invasion from a 6 x 6 sanctuary (r = 2, a = 0.6)\nblack = cooperative cell', fontsize=12)
     plt.tight_layout(); plt.savefig(FIGDIR / 'Fig8.png', dpi=150, bbox_inches='tight')
     print(f'\nSaved Fig8.png   ({(time.time() - t_start)/60:.1f} min)')

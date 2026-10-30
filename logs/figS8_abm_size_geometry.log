@@ -1,0 +1,38 @@
+1. Geometry at constant area (cells: periodic square 48 2304, bounded square 48 2304, disc radius 27 2292)
+  State without therapy after 150 time units (D, C, S, mean local F):
+    periodic square 48   r = 1: 0.682 0.763 0.833 0.470
+    periodic square 48   r = 2: 0.739 0.789 0.840 0.484
+    bounded square 48    r = 1: 0.674 0.758 0.832 0.468
+    bounded square 48    r = 2: 0.738 0.788 0.840 0.484
+    disc radius 27       r = 1: 0.666 0.758 0.822 0.466
+    disc radius 27       r = 2: 0.729 0.786 0.829 0.488
+  a50, coherence channel alone (window 5) / single-channel control at equal peak total amplitude (course 16):
+    periodic square 48   r = 1: 0.277 / 0.133
+    periodic square 48   r = 2: 0.318 / 0.185
+    bounded square 48    r = 1: 0.278 / 0.132
+    bounded square 48    r = 2: 0.320 / 0.182
+    disc radius 27       r = 1: 0.285 / 0.133
+    disc radius 27       r = 2: 0.320 / 0.184
+  P(collapse) with an untreated square pocket (amplitude 0.6), sides [0, 2, 3, 4, 5, 6, 8]
+    periodic square 48   r = 1, centre: 1.00 1.00 0.25 0.08 0.00 0.00 0.00
+    periodic square 48   r = 2, centre: 1.00 0.92 0.75 0.17 0.00 0.00 0.00
+    bounded square 48    r = 1, centre: 1.00 1.00 0.33 0.08 0.00 0.00 0.00
+    bounded square 48    r = 2, centre: 1.00 0.92 0.75 0.17 0.00 0.00 0.00
+    disc radius 27       r = 1, centre: 1.00 0.83 0.50 0.08 0.00 0.00 0.00
+    disc radius 27       r = 2, centre: 1.00 1.00 0.58 0.42 0.08 0.00 0.00
+    disc radius 27       r = 1, edge:   1.00 0.58 0.42 0.25 0.08 0.00 0.00
+    disc radius 27       r = 2, edge:   1.00 0.92 0.58 0.17 0.00 0.00 0.00
+
+2. Size, r = 2 (cells: disc radius 14 616, disc radius 27 2292, disc radius 54 9176, periodic square 24 576, periodic square 48 2304, periodic square 96 9216)
+    disc radius 14       a50 0.310   pocket centre: 1.00 1.00 0.92 0.33 0.00 0.00 0.00
+    disc radius 27       a50 0.320   pocket centre: 1.00 1.00 0.58 0.42 0.08 0.00 0.00
+    disc radius 54       a50 0.322   pocket centre: 1.00 0.83 0.58 0.33 0.08 0.00 0.00
+    periodic square 24   a50 0.322   pocket centre: 1.00 0.92 0.50 0.25 0.00 0.00 0.00
+    periodic square 48   a50 0.318   pocket centre: 1.00 0.92 0.75 0.17 0.00 0.00 0.00
+    periodic square 96   a50 0.318   pocket centre: 1.00 1.00 0.58 0.25 0.00 0.00 0.00
+    disc radius 14       state without therapy: 0.728 0.785 0.840 0.492
+    disc radius 54       state without therapy: 0.721 0.788 0.843 0.506
+    periodic square 24   state without therapy: 0.718 0.789 0.827 0.501
+    periodic square 96   state without therapy: 0.728 0.793 0.837 0.498
+
+Saved FigS8.png   (41.7 min)

@@ -19,6 +19,7 @@ HERE = Path(__file__).resolve().parent
 FIGDIR = HERE.parent / 'figures'
 FIGDIR.mkdir(exist_ok=True)
 import numpy as np, matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 13, 'axes.titlesize': 13, 'axes.labelsize': 13, 'legend.fontsize': 11, 'xtick.labelsize': 12, 'ytick.labelsize': 12})
 
 P = dict(mu0=0.8, mu1=0.05, delta_D=0.6, alpha=1.2, beta=0.12, delta_C=0.15, gamma=1.0, kappa=0.6, delta_S=0.15,
          r0=0.10, cost=0.30, K=1.0, kill=2.0, mut=2e-5,
@@ -111,29 +112,29 @@ if __name__ == '__main__':
         print(f'  N_s(0) = {nb:.2f}: TTP continuous {a:.0f}, adaptive {b:.0f}, ratio {b/a:.2f}')
 
     # ---- figure ----
-    fig, ax = plt.subplots(2, 2, figsize=(13, 9))
+    fig, ax = plt.subplots(2, 2, figsize=(14, 10))
     a0 = ax[0, 0]
     a0.plot(t, burden(out_c), 'C3', lw=1.8, label='Continuous')
     a0.plot(t, burden(out_a), 'C0', lw=1.8, label='Adaptive')
     a0.axhline(0.90, color='k', ls='--', lw=1, label='Progression threshold')
     for tp, c in [(tp_c, 'C3'), (tp_a, 'C0')]:
         if np.isfinite(tp): a0.plot(tp, 0.90, 'v', color=c, ms=9)
-    a0.set_xlabel('Time'); a0.set_ylabel('Total tumour burden')
-    a0.set_title('A. Time to progression'); a0.legend(fontsize=8); a0.grid(alpha=0.3)
+    a0.set_xlabel('Time'); a0.set_ylabel('Tumor burden N')
+    a0.set_title('A. Time to progression'); a0.legend(fontsize=11); a0.grid(alpha=0.3)
 
     a1 = ax[0, 1]
     for o, c, nm in [(out_c, 'C3', 'Continuous'), (out_a, 'C0', 'Adaptive')]:
         a1.plot(t, o[:, 4]/np.maximum(o[:, 3]+o[:, 4], 1e-12), color=c, lw=1.8, label=nm)
     a1.set_xlabel('Time'); a1.set_ylabel('Resistant fraction')
     a1.set_title('B. Competitive suppression of resistance')
-    a1.legend(fontsize=8); a1.grid(alpha=0.3)
+    a1.legend(fontsize=11); a1.grid(alpha=0.3)
 
     a2 = ax[1, 0]
     for o, c, nm in [(out_c, 'C3', 'Continuous'), (out_a, 'C0', 'Adaptive')]:
         a2.plot(t, Ffunc(o), color=c, lw=1.5, label=nm)
     a2.set_xlabel('Time'); a2.set_ylabel('Collective function F')
     a2.set_title('C. GPC state under the two schedules')
-    a2.legend(fontsize=8); a2.grid(alpha=0.3)
+    a2.legend(fontsize=11); a2.grid(alpha=0.3)
 
     a3 = ax[1, 1]
     oms = [0.0, 0.5, 1.0, 2.0]
@@ -144,7 +145,7 @@ if __name__ == '__main__':
     a3.set_xlabel('Cooperative growth benefit omega')
     a3.set_ylabel('TTP ratio, adaptive / continuous')
     a3.set_title('D. Cooperative growth benefit erodes the adaptive advantage')
-    a3.legend(fontsize=8); a3.grid(alpha=0.3)
+    a3.legend(fontsize=11); a3.grid(alpha=0.3)
 
     plt.tight_layout(); plt.savefig(FIGDIR / 'Fig6.png', dpi=150, bbox_inches='tight')
     print('\nSaved Fig6.png')

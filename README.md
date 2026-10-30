@@ -6,14 +6,15 @@ perturbations, microenvironmental exposure, keystone phenotypes in interaction n
 coupling with a clonal compartment (adaptive vs continuous therapy), a spatial
 agent-based version, and a metastatic meta-community.
 
-Authors: Benjamin Roche, Frédéric Thomas.
+Authors: Benjamin Roche, Margaux Bieuville, Alexandre Fontanella, Antoine M. Dujon,
+Frédéric Thomas.
 
 ## Contents
 
 ```
 scripts/   one script per figure: figN_*.py writes figures/FigN.png,
            figSN_*.py writes figures/FigSN.png; run_all.py runs them all
-figures/   Fig1 to Fig8 (main text), FigS1 to FigS6 (Supplementary Materials)
+figures/   Fig1 to Fig8 (main text), FigS1 to FigS8 (Supplementary Materials)
 logs/      printed output of each script (every number reported in the article
            comes from these files) and _run.txt (run times)
 ```
@@ -27,7 +28,7 @@ Python 3.9 or later.
 
 ```bash
 pip install -r scripts/requirements.txt
-python scripts/run_all.py              # all scripts, about 45 min on 2 cores
+python scripts/run_all.py              # all scripts, about 90 min on 2 cores
 python scripts/run_all.py fig3 fig6    # only scripts whose name starts with these prefixes
 ```
 
@@ -51,8 +52,10 @@ networkx 3.7.
 | Fig. S4 Adaptive therapy, collective model only | `figS4_adaptive_collective.py` | 1 s |
 | Fig. S5 Critical slowing down | `figS5_critical_slowing_down.py` | 13 s |
 | Fig. S6 Metastatic meta-community | `figS6_metastatic_metacommunity.py` | 16 min |
+| Fig. S7 Collapse threshold, C–S couplings | `figS7_model_robustness.py` | 40 s |
+| Fig. S8 Agent-based model: boundaries, shape, size | `figS8_abm_size_geometry.py` | 42 min |
 
-`fig8_spatial_abm.py` uses every available core; the other scripts run on one core.
+`fig8_spatial_abm.py` and `figS8_abm_size_geometry.py` use every available core; the other scripts run on one core.
 
 ## License
 

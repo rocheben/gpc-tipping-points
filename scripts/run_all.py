@@ -1,7 +1,7 @@
 """Run every figure script and keep its printed output in ../logs/<script>.log.
 Usage:  python run_all.py            (all scripts)
         python run_all.py fig3 fig6   (only scripts whose name starts with these prefixes)
-Scripts fig8 (about 27 min on 2 cores) and figS6 (about 17 min) are the slow ones."""
+Scripts fig8 (about 27 min on 2 cores), figS8 (about 41 min on 2 cores) and figS6 (about 17 min) are the slow ones."""
 import os, subprocess, sys, time
 from pathlib import Path
 HERE = Path(__file__).resolve().parent

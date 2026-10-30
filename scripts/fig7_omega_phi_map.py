@@ -16,6 +16,7 @@ HERE = Path(__file__).resolve().parent
 FIGDIR = HERE.parent / 'figures'
 FIGDIR.mkdir(exist_ok=True)
 import numpy as np, matplotlib.pyplot as plt, time
+plt.rcParams.update({'font.size': 13, 'axes.titlesize': 13, 'axes.labelsize': 13, 'legend.fontsize': 11, 'xtick.labelsize': 12, 'ytick.labelsize': 12})
 
 BASE = dict(mu0=0.8, mu1=0.05, delta_D=0.6, alpha=1.2, beta=0.12, delta_C=0.15, gamma=1.0, kappa=0.6,
             delta_S=0.15, r0=0.10, cost=0.30, K=1.0, kill=2.0, mut=2e-5)
@@ -149,19 +150,19 @@ if __name__ == '__main__':
     a0.set_xlabel('Cooperative growth benefit omega'); a0.set_ylabel('Coherence cap by resistant cells phi')
     a0.set_title('A. log2 TTP ratio (adaptive / continuous)')
     cb = fig.colorbar(im, ax=a0); cb.set_label('log2 ratio  (>0: adaptive better)')
-    a0.legend(fontsize=8, loc='upper right')
+    a0.legend(fontsize=11, loc='upper right')
 
     a1 = ax[0, 1]
     for v, col in [(0.0, 'C7'), (0.06, 'C8'), (0.14, 'C1'), (0.3, 'C2'), (0.5, 'C0'), (0.9, 'C4')]:
         i = np.argmin(abs(ph - v)); a1.plot(om, R[i], color=col, lw=1.8, label=f'phi = {ph[i]:.2f}')
     a1.axhline(1, color='k', ls=':'); a1.set_xlabel('omega'); a1.set_ylabel('TTP ratio')
-    a1.set_title('B. Along omega: gradual decline through ratio = 1'); a1.legend(fontsize=8); a1.grid(alpha=0.3)
+    a1.set_title('B. Along omega: gradual decline through ratio = 1'); a1.legend(fontsize=11); a1.grid(alpha=0.3)
 
     a2 = ax[1, 0]
     for v, col in [(1, 'C7'), (2, 'C1'), (6, 'C0'), (12, 'C4')]:
         j = np.argmin(abs(om - v)); a2.plot(ph, R[:, j], 'o-', ms=2.5, color=col, lw=1.5, label=f'omega = {om[j]:.0f}')
     a2.axhline(1, color='k', ls=':'); a2.set_xlabel('phi'); a2.set_ylabel('TTP ratio')
-    a2.set_title('C. Along phi: a step where continuous therapy tips the GPC'); a2.legend(fontsize=8); a2.grid(alpha=0.3)
+    a2.set_title('C. Along phi: a step where continuous therapy tips the GPC'); a2.legend(fontsize=11); a2.grid(alpha=0.3)
 
     a3 = ax[1, 1]
     for i, ls in [(0, '--'), (i5, '-')]:
@@ -169,6 +170,6 @@ if __name__ == '__main__':
         a3.plot(om, a['ttp'][i], color='C0', ls=ls, lw=1.8, label=f'adaptive, phi = {ph[i]:.1f}')
     a3.set_xlabel('omega'); a3.set_ylabel('Time to progression')
     a3.set_title('D. Mechanism: with phi > phi*, continuous TTP is insensitive to omega')
-    a3.legend(fontsize=8); a3.grid(alpha=0.3)
+    a3.legend(fontsize=11); a3.grid(alpha=0.3)
     plt.tight_layout(); plt.savefig(FIGDIR / 'Fig7.png', dpi=150, bbox_inches='tight')
     print(f'\nSaved Fig7.png   ({time.time()-t_start:.0f} s)')

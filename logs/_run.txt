@@ -12,3 +12,5 @@ figS3_stochastic_relapse.py              exit 0        2 s
 figS4_adaptive_collective.py             exit 0        1 s
 figS5_critical_slowing_down.py           exit 0       13 s
 figS6_metastatic_metacommunity.py        exit 0      941 s
+figS7_model_robustness.py                exit 0       40 s
+figS8_abm_size_geometry.py               exit 0     2502 s

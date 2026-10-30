@@ -13,6 +13,7 @@ HERE = Path(__file__).resolve().parent
 FIGDIR = HERE.parent / 'figures'
 FIGDIR.mkdir(exist_ok=True)
 import numpy as np, networkx as nx, matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 13, 'axes.titlesize': 13, 'axes.labelsize': 13, 'legend.fontsize': 11, 'xtick.labelsize': 12, 'ytick.labelsize': 12})
 from scipy.stats import spearmanr
 import importlib.util
 spec = importlib.util.spec_from_file_location('m', HERE / 'fig3_sequential_vs_simultaneous.py')
@@ -91,7 +92,7 @@ for name in ['ER', 'BA']:
     rw, pw = spearmanr(a[o], b[o]); rows.append((name, rw, pw))
     print(f'  within {name}: rho = {rw:.2f}, p = {pw:.2g}')
 
-fig, ax = plt.subplots(1, 3, figsize=(16, 4.8))
+fig, ax = plt.subplots(1, 3, figsize=(18, 6))
 colors = {('ER', 'targeted'): 'C0', ('ER', 'random'): 'C9', ('BA', 'targeted'): 'C3', ('BA', 'random'): 'C1'}
 x = np.arange(N)/N
 for k, curves in res.items():
@@ -99,9 +100,9 @@ for k, curves in res.items():
     ax[0].plot(x[:L], arr.mean(0), color=colors[k], lw=2,
                label=f"{'Hub-dominated (BA)' if k[0]=='BA' else 'Homogeneous (ER)'}, {k[1]}")
     ax[0].fill_between(x[:L], arr.mean(0)-arr.std(0), arr.mean(0)+arr.std(0), color=colors[k], alpha=0.15)
-ax[0].axhline(CMAX_STAR, color='k', ls='--', label=f'Tipping threshold Cmax* = {CMAX_STAR:.2f}')
-ax[0].set_xlabel('Fraction of phenotypes removed'); ax[0].set_ylabel('Maximal coherence Cmax = E/E0')
-ax[0].set_title('A. Coherence loss under node removal'); ax[0].legend(fontsize=7.5); ax[0].grid(alpha=0.3)
+ax[0].axhline(CMAX_STAR, color='k', ls='--', label=f'Tipping threshold $C_{{max}}^*$ = {CMAX_STAR:.2f}')
+ax[0].set_xlabel('Fraction of phenotypes removed'); ax[0].set_ylabel(r'Maximal coherence $C_{max} = E/E_0$')
+ax[0].set_title('A. Coherence loss under node removal'); ax[0].legend(fontsize=11); ax[0].grid(alpha=0.3)
 
 keys = list(res.keys())
 ax[1].boxplot([np.array(crit[k])[np.isfinite(crit[k])] for k in keys],
@@ -111,9 +112,9 @@ ax[1].set_title('B. Keystone removal vs random loss'); ax[1].grid(alpha=0.3, axi
 
 ax[2].scatter(phi['ER'], crit[('ER', 'targeted')], s=14, color='C0', alpha=0.6, label='ER')
 ax[2].scatter(phi['BA'], crit[('BA', 'targeted')], s=14, color='C3', alpha=0.6, label='BA')
-ax[2].set_xlabel('Fragility index Phi = lambda_max / <k>')
+ax[2].set_xlabel(r'Fragility index $\Phi = \lambda_{max}/\langle k\rangle$')
 ax[2].set_ylabel('Critical targeted fraction')
-ax[2].set_title(f'C. Phi predicts vulnerability (pooled Spearman rho = {rho:.2f})')
+ax[2].set_title(f'C. Φ predicts vulnerability\n(pooled Spearman ρ = {rho:.2f})')
 ax[2].legend(); ax[2].grid(alpha=0.3)
 plt.tight_layout(); plt.savefig(FIGDIR / 'Fig5.png', dpi=150, bbox_inches='tight')
 print('Saved Fig5.png')

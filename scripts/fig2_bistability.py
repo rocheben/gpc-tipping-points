@@ -15,6 +15,7 @@ FIGDIR = HERE.parent / 'figures'
 FIGDIR.mkdir(exist_ok=True)
 import numpy as np
 import matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 13, 'axes.titlesize': 13, 'axes.labelsize': 13, 'legend.fontsize': 11, 'xtick.labelsize': 12, 'ytick.labelsize': 12})
 from scipy.integrate import odeint
 
 # ---------- Parameters ----------
@@ -87,7 +88,7 @@ if len(upper_branch):
 lower_branch = np.array(lower_branch) if lower_branch else np.empty((0,2))
 
 # ---------- 3. Plots ----------
-fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+fig, axes = plt.subplots(1, 2, figsize=(13, 5.5))
 
 ax = axes[0]
 if len(upper_branch) > 0:

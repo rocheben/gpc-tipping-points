@@ -4,7 +4,7 @@ Stationary state without therapy (global D, C, S, mean local F):
   r = 2       0.739 0.789 0.840 0.484
   r = 1       0.682 0.763 0.833 0.470
 
-Critical amplitude a50 (regime 1: amplitude per drug, w = 5; regime 2: peak burden, tau = 16)
+Critical amplitude a50 (regime 1: amplitude per agent, w = 5; regime 2: peak total amplitude, tau = 16)
   schedule     ODE  well-mixed       r = 4       r = 2       r = 1   max ambiguous share
   C          0.333       0.340       0.333       0.318       0.281   0.00
   sim        0.274       0.277       0.278       0.263       0.247   0.12
@@ -24,4 +24,4 @@ Sanctuary (C only, a = 0.6, w = 5; unexposed square of given side, lattice 48 x 
   r = 2  side 0: 1.00  side 2: 1.00  side 3: 0.83  side 4: 0.33  side 5: 0.00  side 6: 0.00  side 8: 0.00  side 12: 0.00
   r = 1  side 0: 1.00  side 2: 1.00  side 3: 0.58  side 4: 0.33  side 5: 0.00  side 6: 0.00  side 8: 0.00  side 12: 0.00
 
-Saved Fig8.png   (23.6 min)
+Saved Fig8.png   (44.4 min)

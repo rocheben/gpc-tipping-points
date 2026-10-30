@@ -54,7 +54,7 @@ arr((2.55, 1.15), (1.2, 2.68), BLUE, cs='arc3,rad=-0.3');     lab(1.25, 1.75, '�
 lab(5.55, 0.68, 'each variable decays (δ_D, δ_C, δ_S)', GREY, fs=8.5)
 
 # therapy
-box(1.35, 5.75, 'T_S', 'microenvironment agent', RED, h=0.72, fs=12)
+box(1.35, 5.75, 'T_S', 'agent acting on spatial structure', RED, w=2.3, h=0.72, fs=12)
 box(3.5, -0.75, 'T_C', 'agent disrupting cooperative signaling', RED, w=2.6, h=0.72, fs=12)
 arr((1.35, 5.38), (1.35, 3.52), RED, style='-[, widthB=0.6, lengthB=0.25'); lab(0.8, 4.15, '− κT_S', RED)
 arr((3.5, -0.38), (3.5, 0.8), RED, style='-[, widthB=0.6, lengthB=0.25'); lab(3.05, 0.2, '− βT_C', RED)

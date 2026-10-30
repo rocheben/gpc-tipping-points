@@ -19,6 +19,7 @@ FIGDIR = HERE.parent / 'figures'
 FIGDIR.mkdir(exist_ok=True)
 import numpy as np
 import matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 13, 'axes.titlesize': 13, 'axes.labelsize': 13, 'legend.fontsize': 11, 'xtick.labelsize': 12, 'ytick.labelsize': 12})
 
 P = dict(mu0=0.8, mu1=0.05, delta_D=0.6, alpha=1.2, beta=0.8,
          delta_C=0.15, gamma=1.0, kappa=0.6, delta_S=0.15)
@@ -88,20 +89,20 @@ def crit(make, lo=0.0, hi=4.0, tol=1e-3):
     return hi
 
 if __name__ == '__main__':
-    lab = {'sim': 'Simultaneous', 'CS': 'Sequential C then S', 'SC': 'Sequential S then C',
-           'Cfull': 'C only (control)', 'C': 'C only', 'S': 'S only'}
+    lab = {'sim': 'Simultaneous', 'CS': 'Sequential $T_C$ then $T_S$', 'SC': 'Sequential $T_S$ then $T_C$',
+           'Cfull': '$T_C$ only (control)', 'C': '$T_C$ only', 'S': '$T_S$ only'}
     col = {'sim': 'C3', 'CS': 'C0', 'SC': 'C2', 'Cfull': 'C7'}
 
     # Regime 1: equal dose per drug (each drug at amplitude a for w = 5)
     r1 = {k: critical_amplitude(k, 5.0) for k in ['C', 'S', 'sim', 'CS', 'SC']}
-    print('Regime 1 (equal dose per drug, w=5), critical amplitude per drug:')
+    print('Regime 1 (equal amplitude per agent, w=5), critical amplitude per agent:')
     for k, v in r1.items(): print(f'  {lab[k]:<22} {v:.3f}')
 
     # Regime 2: equal peak total burden, same duration and cumulative dose
     taus = np.array([4, 6, 10, 16, 24, 40])
     r2 = {k: np.array([crit(lambda B, k=k, tau=tau: schedule_burden(k, B, tau)) for tau in taus])
           for k in ['sim', 'CS', 'SC', 'Cfull']}
-    print('\nRegime 2 (equal peak burden), critical burden B* vs tau', list(taus))
+    print('\nRegime 2 (equal peak total amplitude), critical a_tot* vs tau', [int(x) for x in taus])
     for k, v in r2.items(): print(f'  {lab[k]:<22}', ' '.join(f'{x:.3f}' for x in v))
 
     # Delay effect, regime 1, standard and slow diversity dynamics
@@ -122,46 +123,46 @@ if __name__ == '__main__':
             for k in ['sim', 'CS', 'SC']}
     globals()['T_END'] = 250.0
     for k in prob:
-        p = np.array(prob[k]); print(f'  P(collapse)>=0.5 from B = {Bs[np.argmax(p>=0.5)]:.2f} ({lab[k]})')
+        p = np.array(prob[k]); print(f'  P(collapse)>=0.5 from a_tot = {Bs[np.argmax(p>=0.5)]:.2f} ({lab[k]})')
 
-    fig, ax = plt.subplots(2, 2, figsize=(13, 9))
+    fig, ax = plt.subplots(2, 2, figsize=(14, 10))
 
     a0 = ax[0, 0]
     ks = ['sim', 'CS', 'SC']
     x = np.arange(len(ks)); wbar = 0.38
     v1 = [r1[k] for k in ks]; v2 = [r2[k][list(taus).index(16)] for k in ks]
     a0.bar(x - wbar/2, v1, wbar, color=[col[k] for k in ks], alpha=0.45, edgecolor='k',
-           label='Equal dose per drug (w = 5)')
+           label='Equal amplitude per agent (w = 5)')
     a0.bar(x + wbar/2, v2, wbar, color=[col[k] for k in ks], alpha=0.95, edgecolor='k', hatch='//',
-           label='Equal peak total burden (tau = 16)')
+           label=r'Equal peak total amplitude ($\tau$ = 16)')
     a0.set_xticks(x); a0.set_xticklabels([lab[k] for k in ks], rotation=12)
     a0.set_ylabel('Critical intensity for collapse')
     a0.set_title('A. The winner depends on the constraint')
-    a0.legend(fontsize=8); a0.grid(alpha=0.3, axis='y')
+    a0.set_ylim(0, 0.42); a0.legend(fontsize=11, loc='upper center', ncol=1); a0.grid(alpha=0.3, axis='y')
 
     a1 = ax[0, 1]
     for k in ['sim', 'CS', 'SC', 'Cfull']:
         a1.plot(taus, r2[k], marker='o', color=col[k], label=lab[k], ms=4,
                 ls='--' if k == 'Cfull' else '-')
-    a1.set_xlabel('Course duration tau'); a1.set_ylabel('Critical peak burden B*')
-    a1.set_title('B. Equal peak burden: sequencing helps, concentration on C helps more')
-    a1.legend(fontsize=8); a1.grid(alpha=0.3)
+    a1.set_xlabel(r'Course duration $\tau$'); a1.set_ylabel(r'Critical peak total amplitude $a_{tot}^*$')
+    a1.set_title('B. Equal peak total amplitude:\nsequencing helps, $T_C$ alone helps more')
+    a1.legend(fontsize=11); a1.grid(alpha=0.3)
 
     a2 = ax[1, 0]
-    a2.plot(delays, delay_std, 'o-', color='C0', label='C then S, standard diversity dynamics')
-    a2.plot(delays, delay_slow, 's-', color='C9', label='C then S, diversity 33x slower')
+    a2.plot(delays, delay_std, 'o-', color='C0', label='$T_C$ then $T_S$, standard diversity dynamics')
+    a2.plot(delays, delay_slow, 's-', color='C9', label='$T_C$ then $T_S$, diversity 33x slower')
     a2.axhline(r1['sim'], color='C3', ls='--', label='Simultaneous, standard')
     a2.axhline(sim_slow, color='C3', ls=':', label='Simultaneous, slow diversity')
     a2.set_xlabel('Delay between strikes d'); a2.set_ylabel('Critical amplitude a*')
     a2.set_title('C. No vulnerability window: delay never helps')
-    a2.legend(fontsize=8); a2.grid(alpha=0.3)
+    a2.legend(fontsize=11); a2.grid(alpha=0.3)
 
     a3 = ax[1, 1]
     for k in ['sim', 'CS', 'SC']:
         a3.plot(Bs, prob[k], lw=2, color=col[k], label=lab[k])
-    a3.set_xlabel('Peak total burden B'); a3.set_ylabel('Probability of collapse')
-    a3.set_title('D. Collapse probability, noise sigma = 0.01 (200 runs, tau = 16)')
-    a3.legend(fontsize=8); a3.grid(alpha=0.3)
+    a3.set_xlabel('Peak total amplitude $a_{tot}$'); a3.set_ylabel('Probability of collapse')
+    a3.set_title(r'D. Collapse probability, $\sigma$ = 0.01 (200 runs, $\tau$ = 16)')
+    a3.legend(fontsize=11); a3.grid(alpha=0.3)
 
     plt.tight_layout()
     plt.savefig(FIGDIR / 'Fig3.png', dpi=150, bbox_inches='tight')
